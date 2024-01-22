@@ -1,4 +1,4 @@
 package flujic;
 
-public class Speichern  {
+public class Speichern {
 }
