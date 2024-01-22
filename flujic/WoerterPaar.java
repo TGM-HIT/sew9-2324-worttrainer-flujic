@@ -1,3 +1,5 @@
 package flujic;
 
-public class WoerterPaar {}
+public class WoerterPaar  {
+
+}
