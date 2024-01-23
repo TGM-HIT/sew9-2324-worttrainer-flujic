@@ -19,7 +19,9 @@ public class WortTrainer {
     private int versuche;
     private String pfad;
     public WortTrainer(String s) throws IOException {
-        this.pfad = pfad;
+        //änderung 1
+        this.pfad = s;
+
         this.speichern = new JSONSave();
         this.woerterPaare = new ArrayList<WoerterPaar>();
         this.index = 0;
@@ -27,9 +29,14 @@ public class WortTrainer {
         this.falsche = 0;
         this.versuche = 0;
 
-        this.woerterPaare.add(new WoerterPaar("https://www.lucypetproducts.com/wp-content/uploads/2020/01/Golden4.jpg", "Hund"));
-        this.woerterPaare.add(new WoerterPaar("https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/640px-Cat_November_2010-1a.jpg", "Katze"));
-        this.woerterPaare.add(new WoerterPaar("https://www.wissenschaft.de/wp-content/uploads/2/0/2023-11-seeadler.jpg", "Adler"));
+        //this.woerterPaare.add(new WoerterPaar("https://www.lucypetproducts.com/wp-content/uploads/2020/01/Golden4.jpg", "Hund"));
+        //this.woerterPaare.add(new WoerterPaar("https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/640px-Cat_November_2010-1a.jpg", "Katze"));
+        //this.woerterPaare.add(new WoerterPaar("https://www.wissenschaft.de/wp-content/uploads/2/0/2023-11-seeadler.jpg", "Adler"));
+
+        this.woerterPaare.add(new WoerterPaar("Hund", "https://www.lucypetproducts.com/wp-content/uploads/2020/01/Golden4.jpg"));
+        this.woerterPaare.add(new WoerterPaar("Katze", "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/640px-Cat_November_2010-1a.jpg"));
+        this.woerterPaare.add(new WoerterPaar("Adler", "https://www.wissenschaft.de/wp-content/uploads/2/0/2023-11-seeadler.jpg"));
+
 
         load();
     }
@@ -41,7 +48,7 @@ public class WortTrainer {
             Image img = getImage();
 
             String res = (String) JOptionPane.showInputDialog(null, "Was ist das Wort?", "Wort Trainer", JOptionPane.QUESTION_MESSAGE, new ImageIcon(img), null, null);
-            if(res.isEmpty()){
+            if(res == null || res.isEmpty()){
                 // TODO save();
                 return;
             }

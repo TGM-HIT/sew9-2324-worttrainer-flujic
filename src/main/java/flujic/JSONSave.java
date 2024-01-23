@@ -56,7 +56,10 @@ public class JSONSave implements Speichern{
         for(int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             try {
-                woerterPaar.add(new WoerterPaar(jsonObject.getString("url"), jsonObject.getString("wort")));
+                //bugfix 2
+                //woerterPaar.add(new WoerterPaar(jsonObject.getString("url"), jsonObject.getString("wort")));
+                woerterPaar.add(new WoerterPaar(jsonObject.getString("wort"), jsonObject.getString("url")));
+
             } catch (IllegalArgumentException | IOException e) {
                 throw new RuntimeException(e);
             }

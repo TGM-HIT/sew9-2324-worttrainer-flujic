@@ -1,6 +1,7 @@
 
 plugins {
     id("java")
+    id("application")
 }
 
 group = "flujic"
@@ -18,4 +19,8 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+application {
+    mainClass.set("flujic.WortTrainer")
 }
