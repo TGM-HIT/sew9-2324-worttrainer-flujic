@@ -12,15 +12,15 @@ public class WortTrainer {
     }
 
     private ArrayList<WoerterPaar> woerterPaare;
-    private Speicherung speicherung;
+    private Speichern speichern;
     private int index;
     private int richtige;
     private int falsche;
     private int versuche;
     private String pfad;
-    public WortTrainer(String s) {
+    public WortTrainer(String s) throws IOException {
         this.pfad = pfad;
-        this.speicherung = new JSONSave();
+        this.speichern = new JSONSave();
         this.woerterPaare = new ArrayList<WoerterPaar>();
         this.index = 0;
         this.richtige = 0;
@@ -93,7 +93,7 @@ public class WortTrainer {
     }
 
     public void load(){
-        WortTrainer geladen = this.speicherung.loadContent(this.pfad, this);
+        WortTrainer geladen = this.speichern.loadContent(this.pfad, this);
         if(geladen != null){
             this.woerterPaare = geladen.getWoerterPaare();
             this.index = geladen.getIndex();
@@ -105,7 +105,7 @@ public class WortTrainer {
 
     public void save(){
         try {
-            this.speicherung.saveContent(this.pfad, this);
+            this.speichern.saveContent(this.pfad, this);
         } catch (IOException e){
             throw new RuntimeException(e);
         }
@@ -119,12 +119,12 @@ public class WortTrainer {
         this.woerterPaare = woerterPaare;
     }
 
-    public Speicherung getSpeicherung() {
-        return speicherung;
+    public Speichern getSpeichern() {
+        return speichern;
     }
 
-    public void setSpeicherung(Speicherung speicherung) {
-        this.speicherung = speicherung;
+    public void setSpeichern(Speichern speichern) {
+        this.speichern = speichern;
     }
 
     public int getIndex() {
